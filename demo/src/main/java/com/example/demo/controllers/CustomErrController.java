@@ -34,7 +34,8 @@ public class CustomErrController implements ErrorController {
 
     private Map<String, Object> getErrorAttributes(WebRequest request) {
         Map<String, Object> map = new HashMap<>();
-        map.putAll(this.errorAttributes.getErrorAttributes(request, ErrorAttributeOptions.defaults().including(ErrorAttributeOptions.Include.MESSAGE)));
+        map.putAll(this.errorAttributes.getErrorAttributes(request,
+                ErrorAttributeOptions.defaults().including(ErrorAttributeOptions.Include.MESSAGE)));
         return map;
     }
 }

@@ -9,11 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 @RestController
 @RequestMapping("xkcd")
 public class XKCDController {
-    
+
     @GetMapping("/current")
     public XkcdComic xkcdComic() {
         RestTemplate restTemplate = new RestTemplate();
@@ -24,8 +23,9 @@ public class XKCDController {
     @GetMapping("/past/{comicNumber}")
     public XkcdComic xkcdComicPast(@PathVariable("comicNumber") String comicNumber) {
         RestTemplate restTemplate = new RestTemplate();
-        XkcdComic result = restTemplate.getForObject("https://xkcd.com/" + comicNumber + "/info.0.json", XkcdComic.class);
+        XkcdComic result = restTemplate.getForObject("https://xkcd.com/" + comicNumber + "/info.0.json",
+                XkcdComic.class);
         return result;
     }
-    
+
 }

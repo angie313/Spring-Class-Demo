@@ -19,8 +19,9 @@ public class ErrorObject {
         this.setTimeStamp(errorAttributes.get("timestamp").toString());
 
         String msg = (String) errorAttributes.get("message");
-        if(msg.contains("invalid field combination")){
-            this.setErrorMessage("400 Bad Request: invalid combination of query parameters passed (e.g. 'start-date' cannot be used with 'date'; 'count' cannot be used with 'date' or 'start-date' and 'end-date', etc.)");
+        if (msg.contains("invalid field combination")) {
+            this.setErrorMessage(
+                    "400 Bad Request: invalid combination of query parameters passed (e.g. 'start-date' cannot be used with 'date'; 'count' cannot be used with 'date' or 'start-date' and 'end-date', etc.)");
         } else {
             this.setErrorMessage(msg);
         }

@@ -10,12 +10,11 @@ import com.example.demo.domain.Greeting;
 
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 @RestController
-public class Hello{
+public class Hello {
 
     @GetMapping("/hello")
-    public String hello(){
+    public String hello() {
         return "Hello World.";
     }
 
@@ -26,10 +25,10 @@ public class Hello{
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
-    
+
     @GetMapping("/greeting/{name}")
-	public Greeting greetingPath(@PathVariable("name") String name) {
-		return new Greeting(counter.incrementAndGet(), String.format(template, name));
-	}
-    
+    public Greeting greetingPath(@PathVariable("name") String name) {
+        return new Greeting(counter.incrementAndGet(), String.format(template, name));
+    }
+
 }
