@@ -12,9 +12,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
+@RequestMapping("nasa")
 public class APODController {
 
     public String getApiKey() {
@@ -23,7 +25,7 @@ public class APODController {
         return nasaKey == null ? "DEMO_KEY" : nasaKey;
     }
 
-    @GetMapping("/nasa-apod")
+    @GetMapping("/apod")
     public List<APODPicture> getAPOD(
             @RequestParam(name = "date", required = false) String date,
             @RequestParam(name = "start-date", required = false) String startDate,

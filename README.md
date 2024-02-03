@@ -1,6 +1,6 @@
 # Spring-Class-Demo
 ## NASA APOD (Picture of the Day) API Assignment
-Endpoint: GET `/nasa-apod`
+Endpoint: GET `/nasa/apod`
 - Optional query params:
     - date (`YYYY-MM-DD` format)
     - thumbs (`True` or `False`)
@@ -8,11 +8,11 @@ Endpoint: GET `/nasa-apod`
     - start-date (`YYYY-MM-DD` format)
     - end-date (`YYYY-MM-DD` format)
 ### Examples
-- No query params specified: `localhost:8080/nasa-apod` returns the picture for today 
-- *Date* specified: `localhost:8080/nasa-apod?date=2023-12-25` return APOD for 2023-12-25 
-- *count* specified: `localhost:8080/nasa-apod?count=10` returns a list of 10 randomly chosen APOD 
-- *thumbs* specified: `localhost:8080/nasa-apod?thumbs=true` returns URL of video thumbnail if APOD is a video
-- *start-date* and *end-date* specified: `localhost:8080/nasa-apod?start-date=2024-01-01&end-date=2024-01-10` returns a list of APOD from 2024-01-01 to 2024-01-10
+- No query params specified: `localhost:8080/nasa/apod` returns the picture for today 
+- *Date* specified: `localhost:8080/nasa/apod?date=2023-12-25` return APOD for 2023-12-25 
+- *count* specified: `localhost:8080/nasa/apod?count=10` returns a list of 10 randomly chosen APOD 
+- *thumbs* specified: `localhost:8080/nasa/apod?thumbs=true` returns URL of video thumbnail if APOD is a video
+- *start-date* and *end-date* specified: `localhost:8080/nasa/apod?start-date=2024-01-01&end-date=2024-01-10` returns a list of APOD from 2024-01-01 to 2024-01-10
 ### Limitations
 - *date* must be on or after 1995-06-16, the first day an APOD picture was posted
 - *date* cannot be a future day
