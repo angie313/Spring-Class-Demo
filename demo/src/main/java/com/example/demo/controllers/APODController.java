@@ -5,6 +5,8 @@ import org.springframework.web.client.RestTemplate;
 
 import com.example.demo.domain.APODPicture;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,6 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 public class APODController {
 
+    public String getApiKey() {
+        Dotenv dotenv = Dotenv.load();
+        String nasaKey = dotenv.get("API_KEY");
+        return nasaKey == null ? "DEMO_KEY" : nasaKey;
+    }
+
     @GetMapping("/nasa-apod")
     public List<APODPicture> getAPOD(
             @RequestParam(name = "date", required = false) String date,
@@ -23,9 +31,10 @@ public class APODController {
             @RequestParam(name = "count", required = false) String count,
             @RequestParam(name = "thumbs", required = false) boolean getThumbnail) {
 
+        String key = getApiKey();
         RestTemplate restTemplate = new RestTemplate();
         List<APODPicture> pictures = new ArrayList<>();
-        String endpoint = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY";
+        String endpoint = "https://api.nasa.gov/planetary/apod?api_key=" + key;
 
         if (date != null)
             endpoint += "&date=" + date;
