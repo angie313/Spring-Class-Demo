@@ -18,12 +18,10 @@ import jakarta.servlet.http.HttpServletResponse;
 @RestController
 public class CustomErrController implements ErrorController {
 
-    private static final String PATH = "/error";
-
     @Autowired
     private ErrorAttributes errorAttributes;
 
-    @GetMapping(PATH)
+    @GetMapping("/error")
     public ErrorObject error(WebRequest request, HttpServletResponse response) {
         return new ErrorObject(response.getStatus(), getErrorAttributes(request));
     }

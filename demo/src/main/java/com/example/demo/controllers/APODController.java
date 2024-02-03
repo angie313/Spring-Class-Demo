@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("nasa")
 public class APODController {
 
-    public String getApiKey() {
+    private String getApiKey() {
         Dotenv dotenv = Dotenv.load();
         String nasaKey = dotenv.get("API_KEY");
         return nasaKey == null ? "DEMO_KEY" : nasaKey;

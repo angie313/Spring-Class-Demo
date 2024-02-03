@@ -8,7 +8,7 @@ Endpoint: GET `/nasa/apod`
     - start-date (`YYYY-MM-DD` format)
     - end-date (`YYYY-MM-DD` format)
 ### Examples
-- No query params specified: `localhost:8080/nasa/apod` returns the picture for today 
+- No query params or query params other than the listed ones specified: `localhost:8080/nasa/apod` or `localhost:8080/nasa/apod?invalid-param=test` both return the picture for today 
 - *Date* specified: `localhost:8080/nasa/apod?date=2023-12-25` return APOD for 2023-12-25 
 - *count* specified: `localhost:8080/nasa/apod?count=10` returns a list of 10 randomly chosen APOD 
 - *thumbs* specified: `localhost:8080/nasa/apod?thumbs=true` returns URL of video thumbnail if APOD is a video
