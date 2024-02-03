@@ -1,12 +1,12 @@
 # Spring-Class-Demo
 ## NASA APOD (Picture of the Day) API Assignment
-Endpoint: `/nasa-apod`
-Optional query params:
-- date (`YYYY-MM-DD` format)
-- thumbs (`True` or `False`)
-- count (positive integer)
-- start-date (`YYYY-MM-DD` format)
-- end-date (`YYYY-MM-DD` format)
+Endpoint: GET `/nasa-apod`
+- Optional query params:
+    - date (`YYYY-MM-DD` format)
+    - thumbs (`True` or `False`)
+    - count (positive integer)
+    - start-date (`YYYY-MM-DD` format)
+    - end-date (`YYYY-MM-DD` format)
 ### Examples
 - No query params specified: `localhost:8080/nasa-apod` returns the picture for today 
 - *Date* specified: `localhost:8080/nasa-apod?date=2023-12-25` return APOD for 2023-12-25 
