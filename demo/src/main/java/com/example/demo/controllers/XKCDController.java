@@ -4,28 +4,30 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.demo.domain.XkcdComic;
+import com.example.demo.service.xkcd.XkcdService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+// Controllers should be calling to a service or a html file
 
 @RestController
 @RequestMapping("xkcd")
 public class XKCDController {
 
+    @Autowired
+    private XkcdService xkcdService;
+
     @GetMapping("/current")
     public XkcdComic xkcdComic() {
-        RestTemplate restTemplate = new RestTemplate();
-        XkcdComic result = restTemplate.getForObject("https://xkcd.com/info.0.json", XkcdComic.class);
-        return result;
+        return xkcdService.getCurrentComic();
     }
 
     @GetMapping("/past/{comicNumber}")
     public XkcdComic xkcdComicPast(@PathVariable("comicNumber") String comicNumber) {
-        RestTemplate restTemplate = new RestTemplate();
-        XkcdComic result = restTemplate.getForObject("https://xkcd.com/" + comicNumber + "/info.0.json",
-                XkcdComic.class);
-        return result;
+        return xkcdService.getPastComic(comicNumber);
     }
 
 }
