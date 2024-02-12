@@ -1,7 +1,6 @@
 package com.example.demo.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import com.example.demo.domain.XkcdComic;
 import com.example.demo.service.xkcd.XkcdService;
