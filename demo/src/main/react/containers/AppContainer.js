@@ -1,9 +1,41 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 // const AppContainer = (name, color, object) => {
 const AppContainer = (props) => {
     const { name, color, object, count, increment } = props;
     const [count2, setCount2] = useState(0)
+    const [xkcdCurrent, setXkcdCurrent] = useState({})
+    const [xkcdPast, setXkcdPast] = useState(null)
+
+
+    useEffect(() => {
+        axios.get('/xkcd/current')
+            .then(function (response) {
+                setXkcdCurrent(response.data)
+                // handle success
+                console.log(response);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+    }, [])
+
+    const fetchPastComic = (pastNum) => {
+        const defaultNum = xkcdCurrent.num ? xkcdCurrent.num : 2500;
+        const count = pastNum ? pastNum : Math.floor(Math.random() * defaultNum);
+        axios.get(`/xkcd/past/${count}`)
+            .then(function (response) {
+                setXkcdPast(response.data)
+                // handle success
+                console.log(response);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+    }
 
     return (<>
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -32,6 +64,13 @@ const AppContainer = (props) => {
             </div>
         </nav>
         <h1>Hello, world!</h1>
+        <img src={xkcdCurrent.img} alt={xkcdCurrent.alt ? xkcdCurrent.alt : "No Image for the day"} />
+        <h1>Past XKCD Comic</h1>
+        <button type="button" className="btn btn-primary" onClick={() => fetchPastComic()}>Get Past Comic</button>
+        {
+            xkcdPast ?
+                <img src={xkcdPast.img} alt={xkcdPast.alt ? xkcdPast.alt : "No Image for the past"} /> : null
+        }
     </>)
 }
 

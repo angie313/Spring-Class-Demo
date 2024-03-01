@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 // Controllers should be calling to a service or a html file
 
@@ -27,6 +28,11 @@ public class XKCDController {
     @GetMapping("/past/{comicNumber}")
     public XkcdComic xkcdComicPast(@PathVariable("comicNumber") String comicNumber) {
         return xkcdService.getPastComic(comicNumber);
+    }
+
+    @GetMapping("/past-comic")
+    public XkcdComic getPastComicOptional(@RequestParam(name = "comicNum") String comicNum) {
+        return xkcdService.getPastComic(comicNum);
     }
 
 }
