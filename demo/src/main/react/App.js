@@ -1,37 +1,59 @@
 import React, { Component } from "react";
-import ReactDom from "react-dom";
+import ReactDom from "react-dom/client";
 import AppContainer from "/containers/AppContainer.js"
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import XkcdCurrentContainer from "./containers/xkcd/XkcdCurrentContainer";
+import XkcdPastContainer from "./containers/xkcd/XkcdPastContainer";
 
-export class App extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            obj: "Ball",
-            count: 0
-        }
-    }
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <AppContainer />
+    },
+    {
+        path: "/currentxkcdcomic",
+        element: <XkcdCurrentContainer />
+    },
+    {
+        path: "/pastxkcdcomic",
+        element: <XkcdPastContainer />
+    },
+
+])
+
+ReactDom.createRoot(document.getElementById('app')).render(
+    <React.StrictMode>
+        <RouterProvider router={router} />
+    </React.StrictMode>
+)
+
+// export class App extends Component {
+//     constructor(props) {
+//         super(props)
+//         this.state = {
+//             obj: "Ball",
+//             count: 0
+//         }
+//     }
 
 
 
-    render() {
-        const { obj, count } = this.state
-        const increment = () => {
-            this.setState({ count: this.state.count + 1 })
-        }
-        return (
-            <AppContainer
-                name="Jose"
-                color="Green"
-                // object={this.state.obj}
-                object={obj}
-                count={count}
-                increment={increment}
-            />
-        )
-    }
-}
-
-ReactDom.render(<App />, document.querySelector("#app"));
+//     render() {
+//         const { obj, count } = this.state
+//         const increment = () => {
+//             this.setState({ count: this.state.count + 1 })
+//         }
+//         return (
+//             <AppContainer
+//                 name="Jose"
+//                 color="Green"
+//                 object={obj}
+//                 count={count}
+//                 increment={increment}
+//             />
+//         )
+//     }
+// }
 
 
 // Notes:

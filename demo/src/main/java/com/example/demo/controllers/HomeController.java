@@ -6,7 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-    @GetMapping("/")
+    // @GetMapping(value = {"regex-to-exclude-routes-start-with-API"})
+
+    // @GetMapping("/")
+    @GetMapping(value = { "/", "/currentxkcdcomic", "/pastxkcdcomic" })
     public String index() {
         return "index";
     }
