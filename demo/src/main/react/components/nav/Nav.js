@@ -19,7 +19,13 @@ const Nav = () => {
                             <a className="nav-link active" aria-current="page" href="currentxkcdcomic">Current Comic</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href='pastxkcdcomic' >Past Comic</a>
+                            <a className="nav-link" href='pastxkcdcomic'>Past Comic</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href='today-nasa-picture'>Today's NASA Picture</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href='past-nasa-pictures'>Past NASA Pictures</a>
                         </li>
                     </ul>
                 </div>

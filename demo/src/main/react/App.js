@@ -4,6 +4,8 @@ import AppContainer from "/containers/AppContainer.js"
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import XkcdCurrentContainer from "./containers/xkcd/XkcdCurrentContainer";
 import XkcdPastContainer from "./containers/xkcd/XkcdPastContainer";
+import TodayApodContainer from "./containers/nasa/TodayApodContainer";
+import PastApodContainer from "./containers/nasa/PastApodContainer";
 
 const router = createBrowserRouter([
     {
@@ -17,6 +19,14 @@ const router = createBrowserRouter([
     {
         path: "/pastxkcdcomic",
         element: <XkcdPastContainer />
+    },
+    {
+        path: "/today-nasa-picture",
+        element: <TodayApodContainer />
+    },
+    {
+        path: "/past-nasa-pictures",
+        element: <PastApodContainer />
     },
 
 ])
