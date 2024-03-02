@@ -20,15 +20,16 @@ const TodayApodContainer = () => {
     return (<>
         <Nav />
         {
-            todayNasaApod && <h1>Today's Picture: {todayNasaApod.date} {todayNasaApod.title} </h1>
-        }
-        {
             todayNasaApod &&
-            <div>
-                <img src={todayNasaApod.url} alt={todayNasaApod.title && "No Image for the day"} />
+            <div className='m-3'>
+                <h1>Today's Picture: {todayNasaApod.date} {todayNasaApod.title} </h1>
+                {todayNasaApod["media_type"] == "video"
+                    ? <iframe width="560" height="400" src={todayNasaApod.url} />
+                    : <img src={todayNasaApod.url} alt={todayNasaApod.title && "No Image for the day"} />
+                }
+                <p className='my-1'>{todayNasaApod.explanation}</p>
             </div>
         }
-        <p>{todayNasaApod && todayNasaApod.explanation}</p>
     </>)
 }
 
