@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Nav from '../../components/nav/Nav'
 
 const TodayApodContainer = () => {
 
@@ -20,7 +19,6 @@ const TodayApodContainer = () => {
     }, [])
 
     return (<>
-        <Nav />
         {
             responseErr &&
             <p className='text-danger m-3'>{responseErr.errorMessage}</p>

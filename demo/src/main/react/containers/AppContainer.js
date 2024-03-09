@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import Nav from '../components/nav/Nav';
+import { Outlet } from 'react-router-dom';
 
 // const AppContainer = (name, color, object) => {
 const AppContainer = (props) => {
-    // const { name, color, object, count, increment } = props;
-    // const [count2, setCount2] = useState(0)
-    // const [xkcdCurrent, setXkcdCurrent] = useState({})
-    // const [xkcdPast, setXkcdPast] = useState(null)
-    // const [userDefComicNum, setUserDefComicNum] = useState('')
 
     return (<>
         <Nav />
-        <h1>Hello, world!</h1>
+        <Outlet />
     </>)
 }
 

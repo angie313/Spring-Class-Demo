@@ -6,27 +6,34 @@ import XkcdCurrentContainer from "./containers/xkcd/XkcdCurrentContainer";
 import XkcdPastContainer from "./containers/xkcd/XkcdPastContainer";
 import TodayApodContainer from "./containers/nasa/TodayApodContainer";
 import PastApodContainer from "./containers/nasa/PastApodContainer";
+import HomePage from "./components/HomePage";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <AppContainer />
-    },
-    {
-        path: "/currentxkcdcomic",
-        element: <XkcdCurrentContainer />
-    },
-    {
-        path: "/pastxkcdcomic",
-        element: <XkcdPastContainer />
-    },
-    {
-        path: "/today-nasa-picture",
-        element: <TodayApodContainer />
-    },
-    {
-        path: "/past-nasa-pictures",
-        element: <PastApodContainer />
+        element: <AppContainer />,
+        children: [
+            {
+                index: true,
+                element: <HomePage />
+            },
+            {
+                path: "currentxkcdcomic",
+                element: <XkcdCurrentContainer />
+            },
+            {
+                path: "pastxkcdcomic",
+                element: <XkcdPastContainer />
+            },
+            {
+                path: "today-nasa-picture",
+                element: <TodayApodContainer />
+            },
+            {
+                path: "past-nasa-pictures",
+                element: <PastApodContainer />
+            },
+        ]
     },
 
 ])

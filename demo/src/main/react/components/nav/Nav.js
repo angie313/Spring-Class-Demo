@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 
-// const Nav = (props) => {
 const Nav = () => {
-    // const { name, color, object, count, increment } = props;
 
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav className="navbar navbar-expand-lg bg-dark-subtle">
             <div className="container-fluid">
-                <a className="navbar-brand" href="/">Web Dev Example</a>
+                <a className="navbar-brand" href="/">Web Dev</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -16,7 +13,7 @@ const Nav = () => {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="currentxkcdcomic">Current Comic</a>
+                            <a className="nav-link" href="currentxkcdcomic">Current Comic</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href='pastxkcdcomic'>Past Comic</a>

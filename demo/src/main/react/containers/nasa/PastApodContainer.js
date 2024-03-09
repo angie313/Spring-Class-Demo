@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Nav from '../../components/nav/Nav';
 import moment from 'moment';
 
 const PastApodContainer = () => {
@@ -26,7 +25,6 @@ const PastApodContainer = () => {
     }
 
     return (<>
-        <Nav />
         <div className="m-3">
             <label>How many random past pictures would you like to view? (Default: 1)</label>
             <div className='my-2'>
@@ -54,6 +52,7 @@ const PastApodContainer = () => {
                 <button type="button" className="btn btn-primary btn-sm mx-4" onClick={() => fetchApod({ "start-date": userInputStartDate, "end-date": userInputEndDate })}>View Pictures</button>
             </div>
         </div>
+        <hr />
 
         {
             responseErr &&
