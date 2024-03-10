@@ -20,3 +20,10 @@ Endpoint: GET `/nasa/apod`
 - *count* cannot be used in conjunction with *date* or *start-date* and *end-date*
 - *start-date* and *end-date* cannot be used in conjunction with *date*
 - if *start-date* is specified as a date in the past without *end-date*, then *end-date* is default to the current date  
+
+## Display NASA APOD to Frontend
+### Today's Picture Page Screenshot
+![image](https://github.com/angie313/Spring-Class-Demo/assets/74619707/2480f8be-8986-40a0-898e-d1f4e3f4ed94)
+
+### Past Pictures Page Screenshot
+![image](https://github.com/angie313/Spring-Class-Demo/assets/74619707/017b0360-ab1c-462f-8459-9a1c87f456ed)
