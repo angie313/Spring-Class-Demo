@@ -58,18 +58,25 @@ const PastApodContainer = () => {
             responseErr &&
             <p className='text-danger m-3'>{responseErr.errorMessage}</p>
         }
-
         {
             pastApod &&
-            pastApod.map((apod, index) =>
-                <div className="m-3" key={index}>
-                    <h3>{apod.date}: {apod.title}</h3>
-                    {apod["media_type"] == "video"
-                        ? <iframe width="560" height="400" src={apod.url} />
-                        : <img src={apod.url} alt={apod.title && "No Image for the day"} />
-                    }
-                    <p className='my-1'>{apod.explanation}</p>
-                </div>)
+            <div className="row row-cols-3 row-cols-md-2 g-3 w-75 mx-auto mb-3">
+                {
+                    pastApod.map((apod, index) =>
+                        <div className="card" key={index}>
+                            {apod["media_type"] == "video"
+                                ? <iframe height="400" src={apod.url} />
+                                : <img height="400" className="card-img-top" src={apod.url} alt={apod.title && "No Image for the day"} />
+                            }
+                            <div className="card-body">
+                                <h5 className="card-title">{apod.title}</h5>
+                                <p className="card-text">{apod.explanation}</p>
+                                <p className='card-text text-end'><small className='text-body-secondary fs-5'>{apod.date}</small></p>
+                            </div>
+                        </div>
+                    )
+                }
+            </div>
         }
 
     </>)
