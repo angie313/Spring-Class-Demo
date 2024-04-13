@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Nav from '../components/nav/Nav';
 import { Outlet } from 'react-router-dom';
+import { useStore } from '../resources/store.js'
+
 
 // const AppContainer = (name, color, object) => {
 const AppContainer = (props) => {
+    const fetchCurrentComic = useStore((state) => state.fetchCurrentComic)
+
+    useEffect(() => {
+        fetchCurrentComic()
+    }, [])
 
     return (<>
         <Nav />

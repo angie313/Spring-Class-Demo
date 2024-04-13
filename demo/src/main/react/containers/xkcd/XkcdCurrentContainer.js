@@ -1,22 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useStore } from '../../resources/store.js'
 
 // const AppContainer = (name, color, object) => {
 const XkcdCurrentContainer = () => {
-    const [xkcdCurrent, setXkcdCurrent] = useState({})
-
-    useEffect(() => {
-        axios.get('/xkcd/current')
-            .then(function (response) {
-                setXkcdCurrent(response.data)
-                // handle success
-                console.log(response);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
-    }, [])
+    const xkcdCurrent = useStore((state) => state.xkcdCurrentComic) // use zustand to manage state
 
     return (
         <div className='m-3'>

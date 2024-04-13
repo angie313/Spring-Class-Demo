@@ -62,7 +62,7 @@ const PastApodContainer = () => {
             <div className={`w-75 mx-auto my-4 ${pastApod.length > 1 && "row row-cols-3 row-cols-md-2 g-3"}`}>
                 {
                     pastApod.map((apod, index) =>
-                        <ApodPictureCard url={apod.url} title={apod.title} description={apod.explanation} date={apod.date} mediaType={apod["media_type"]} index={index} />
+                        <ApodPictureCard url={apod.url} title={apod.title} description={apod.explanation} date={apod.date} mediaType={apod["media_type"]} key={index} />
                     )
                 }
             </div>
