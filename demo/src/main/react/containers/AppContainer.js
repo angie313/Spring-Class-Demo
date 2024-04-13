@@ -7,9 +7,11 @@ import { useStore } from '../resources/store.js'
 // const AppContainer = (name, color, object) => {
 const AppContainer = (props) => {
     const fetchCurrentComic = useStore((state) => state.fetchCurrentComic)
+    const fetchPastComic = useStore((state) => state.fetchPastComic)
 
     useEffect(() => {
         fetchCurrentComic()
+        fetchPastComic()
     }, [])
 
     return (<>
