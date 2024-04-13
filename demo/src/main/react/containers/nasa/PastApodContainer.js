@@ -1,29 +1,22 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import moment from 'moment';
+import React from 'react';
 import ApodPictureCard from '../../components/ApodPictureCard';
+import moment from 'moment';
+import { nasaStore } from '../../resources/nasaStore.js'
 
 const PastApodContainer = () => {
     const currentDate = moment().format('YYYY-MM-DD');
-
-    const [pastApod, setPastApod] = useState([])
-    const [userSelectDate, setUserSelectDate] = useState(currentDate)
-    const [userInputCount, setUserInputCount] = useState(1)
-    const [userInputStartDate, setUserInputStartDate] = useState(currentDate)
-    const [userInputEndDate, setUserInputEndDate] = useState(currentDate)
-    const [responseErr, setResponseErr] = useState({})
-
-    const fetchApod = (param) => {
-        axios.get('/nasa/apod', {
-            params: param
-        })
-            .then(function (response) {
-                setPastApod(response.data)
-            })
-            .catch(function (error) {
-                setResponseErr(error.response.data)
-            })
-    }
+    // use zustand to manage state
+    const pastApod = nasaStore((state) => state.pastApod)
+    const userSelectDate = nasaStore((state) => state.userSelectDate)
+    const userInputCount = nasaStore((state) => state.userInputCount)
+    const userInputStartDate = nasaStore((state) => state.userInputStartDate)
+    const userInputEndDate = nasaStore((state) => state.userInputEndDate)
+    const setUserInputCount = nasaStore((state) => state.setUserInputCount)
+    const setUserSelectDate = nasaStore((state) => state.setUserSelectDate)
+    const setUserInputStartDate = nasaStore((state) => state.setUserInputStartDate)
+    const setUserInputEndDate = nasaStore((state) => state.setUserInputEndDate)
+    const responseErr = nasaStore((state) => state.responseErr)
+    const fetchApod = nasaStore((state) => state.fetchApod)
 
     return (<>
         <div className='d-flex align-items-center flex-column'>
@@ -59,7 +52,7 @@ const PastApodContainer = () => {
         }
         {
             pastApod &&
-            <div className={`w-75 mx-auto my-4 ${pastApod.length > 1 && "row row-cols-3 row-cols-md-2 g-3"}`}>
+            <div className={`w-75 mx-auto my-4 ${pastApod.length > 1 && "row row-cols-md-2 g-3"}`}>
                 {
                     pastApod.map((apod, index) =>
                         <ApodPictureCard url={apod.url} title={apod.title} description={apod.explanation} date={apod.date} mediaType={apod["media_type"]} key={index} />

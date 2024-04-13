@@ -9,12 +9,12 @@ import { nasaStore } from '../resources/nasaStore.js'
 const AppContainer = (props) => {
     const fetchCurrentComic = useStore((state) => state.fetchCurrentComic)
     const fetchPastComic = useStore((state) => state.fetchPastComic)
-    const fetchTodayNasaApod = nasaStore((state) => state.fetchTodayNasaApod)
+    const fetchApod = nasaStore((state) => state.fetchApod)
 
     useEffect(() => {
         fetchCurrentComic()
         fetchPastComic()
-        fetchTodayNasaApod()
+        fetchApod()
     }, [])
 
     return (<>

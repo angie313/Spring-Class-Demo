@@ -1,16 +1,29 @@
 import { create } from 'zustand'
 import axios from 'axios';
+import moment from 'moment';
 
-export const nasaStore = create((set, get) => ({
+const currentDate = moment().format('YYYY-MM-DD');
+
+export const nasaStore = create((set) => ({
     todayNasaApod: {},
     responseErr: {},
-    fetchTodayNasaApod: async () => {
-        axios.get('/nasa/apod')
+    pastApod: [],
+    userSelectDate: currentDate,
+    userInputCount: 1,
+    userInputStartDate: currentDate,
+    userInputEndDate: currentDate,
+    setUserInputCount: (userInput) => set({ userInputCount: userInput }),
+    setUserSelectDate: (userInput) => set({ userSelectDate: userInput }),
+    setUserInputStartDate: (userInput) => set({ userInputStartDate: userInput }),
+    setUserInputEndDate: (userInput) => set({ userInputEndDate: userInput }),
+    fetchApod: async (param) => {
+        axios.get('/nasa/apod', {
+            params: param
+        })
             .then(function (response) {
-                set({ todayNasaApod: response.data[0] })
+                param == null ? set({ todayNasaApod: response.data[0] }) : set({ pastApod: response.data })
             })
             .catch(function (error) {
-                console.log(error);
                 set({ responseErr: error.response.data })
             })
     },
