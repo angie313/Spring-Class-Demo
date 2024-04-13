@@ -1,23 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import ApodPictureCard from '../../components/ApodPictureCard';
+import { nasaStore } from '../../resources/nasaStore.js'
 
 const TodayApodContainer = () => {
 
-    const [todayNasaApod, setTodayNasaApod] = useState({})
-    const [responseErr, setResponseErr] = useState({})
-
-    useEffect(() => {
-        axios.get('/nasa/apod')
-            .then(function (response) {
-                setTodayNasaApod(response.data[0])
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-                setResponseErr(error.response.data)
-            })
-    }, [])
+    const todayNasaApod = nasaStore((state) => state.todayNasaApod)
+    const responseErr = nasaStore((state) => state.responseErr)
 
     return (
         <>
